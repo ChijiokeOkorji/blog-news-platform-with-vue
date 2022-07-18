@@ -1,0 +1,15 @@
+// create placeholders for commonly called main properties?
+// resolve card2:content-btn with a text-btn/toggle-btn inside
+
+@charset "UTF-8";
+
+@use 'vendors';
+@use 'abstracts';
+@use 'base';
+
+#app {
+  max-width: 100vw;
+  min-height: 100vh;
+  margin: 0 10%;
+  overflow: hidden auto;
+}

@@ -1,0 +1,62 @@
+@use "sass:math";
+@use "sass:map";
+@use "sass:color";
+
+// Source: https://css-tricks.com/snippets/sass/luminance-color-function/
+@function color-luminance($color) {
+  $colors: (
+      "red": color.red($color),
+      "green": color.green($color),
+      "blue": color.blue($color)
+  );
+
+  @each $name, $value in $colors {
+      $adjusted: 0;
+      $value: calc($value / 255);
+
+      @if $value < 0.039298 {
+          $value: calc($value / 12.92);
+      } @else {
+          $value: calc(($value + 0.055) / 1.055);
+          $value: math.pow($value, 2.4);
+      }
+
+      $colors: map.merge($colors, ($name: $value));
+  }
+
+  @return (map.get($colors, "red") * 0.2126) + (map.get($colors, "green") * 0.7152) + (map.get($colors, "blue") * 0.0722);
+}
+
+@function color-emphasis($var-color: #000000, $emphasis: high-emphasis) {
+  @if ($emphasis == medium-emphasis) {
+    @return color.adjust($var-color, $alpha: -0.4);
+  } @else if ($emphasis == disabled) {
+    @return color.adjust($var-color, $saturation: -100%, $alpha: -0.6);
+  } @else if ($var-color == #ffffff) {
+    @return $var-color; //No alpha for high emphasis plain white
+  }
+
+  @return color.adjust($var-color, $alpha: -0.1);
+}
+
+@function color-contrast-mono($var-color) {
+  @if (color-luminance($var-color) < 0.4) {
+    @return #000000;
+  }
+
+  @return #ffffff;
+}
+
+
+@function black-white-switch($var-color) {
+  @if (color.adjust($var-color, $lightness: -100%) == $var-color) {
+    @return color.adjust($var-color, $lightness: 100%);
+  }
+
+  @return color.adjust($var-color, $lightness: -100%);
+}
+
+@function calculateTypeOffset($lh, $fontSize, $descenderHeightScale) {
+  $lineHeightScale: calc($lh / $fontSize);
+  @return calc(($lineHeightScale - 1) / 2) + $descenderHeightScale;
+}

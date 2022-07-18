@@ -1,0 +1,183 @@
+@use 'variables' as v;
+@use 'functions' as f;
+@use 'sass:color';
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Kitty Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+//MIGHT NOT USE CONTENT ABOVE THIS LINE
+@mixin z0-elevation {
+  border: 0.0625rem solid v.$border-stroke;
+  box-shadow: none;
+}
+@mixin z1-elevation {
+  box-shadow: 0 0.0625rem 0.1875rem #0000001f, 0 0.0625rem 0.0625rem #00000024, 0 0.125rem 0.0625rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z2-elevation {
+  box-shadow: 0 0.0625rem 0.3125rem #0000001f, 0 0.125rem 0.125rem #00000024, 0 0.1875rem 0.0625rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z3-elevation {
+  box-shadow: 0 0.0625rem 0.5rem #0000001f, 0 0.1875rem 0.25rem #00000024, 0 0.1875rem 0.1875rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z4-elevation {
+  box-shadow: 0 0.0625rem 0.625rem #0000001f, 0 0.25rem 0.3125rem #00000024, 0 0.125rem 0.25rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z5-elevation {
+  box-shadow: 0 0.0625rem 0.875rem #0000001f, 0 0.3125rem 0.5rem #00000024, 0 0.1875rem 0.3125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z6-elevation {
+  box-shadow: 0 0.0625rem 1.125rem #0000001f, 0 0.375rem 0.625rem #00000024, 0 0.1875rem 0.3125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z7-elevation {
+  box-shadow: 0 0.125rem 1rem #0000001f, 0 0.4375rem 0.625rem #00000024, 0 0.25rem 0.3125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z8-elevation {
+  box-shadow: 0 0.1875rem 0.875rem #0000001f, 0 0.5rem 0.625rem #00000024, 0 0.3125rem 0.3125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z9-elevation {
+  box-shadow: 0 0.1875rem 1rem #0000001f, 0 0.5625rem 0.75rem #00000024, 0 0.3125rem 0.375rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z10-elevation {
+  box-shadow: 0 0.25rem 1.125rem #0000001f, 0 0.625rem 0.875rem #00000024, 0 0.375rem 0.375rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z11-elevation {
+  box-shadow: 0 0.25rem 1.25rem #0000001f, 0 0.6875rem 0.9375rem #00000024, 0 0.375rem 0.4375rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z12-elevation {
+  box-shadow: 0 0.3125rem 1.375rem #0000001f, 0 0.75rem 1.0625rem #00000024, 0 0.4375rem 0.5rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z13-elevation {
+  box-shadow: 0 0.3125rem 1.5rem #0000001f, 0 0.8125rem 1.1875rem #00000024, 0 0.4375rem 0.5rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z14-elevation {
+  box-shadow: 0 0.3125rem 1.625rem #0000001f, 0 0.875rem 1.3125rem #00000024, 0 0.4375rem 0.5625rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z15-elevation {
+  box-shadow: 0 0.375rem 1.75rem #0000001f, 0 0.9375rem 1.375rem #00000024, 0 0.5rem 0.5625rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z16-elevation {
+  box-shadow: 0 0.375rem 1.875rem #0000001f, 0 1rem 1.5rem #00000024, 0 0.5rem 0.625rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z17-elevation {
+  box-shadow: 0 0.375rem 2rem #0000001f, 0 1.0625rem 1.625rem #00000024, 0 0.5rem 0.6875rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z18-elevation {
+  box-shadow: 0 0.4375rem 2.125rem #0000001f, 0 1.125rem 1.75rem #00000024, 0 0.5625rem 0.6875rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z19-elevation {
+  box-shadow: 0 0.4375rem 2.25rem #0000001f, 0 1.1875rem 1.8125rem #00000024, 0 0.5625rem 0.75rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z20-elevation {
+  box-shadow: 0 0.5rem 2.375rem #0000001f, 0 1.25rem 1.9375rem #00000024, 0 0.625rem 0.8125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z21-elevation {
+  box-shadow: 0 0.5rem 2.5rem #0000001f, 0 1.3125rem 2.0625rem #00000024, 0 0.625rem 0.8125rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z22-elevation {
+  box-shadow: 0 0.5rem 2.625rem #0000001f, 0 1.375rem 2.1875rem #00000024, 0 0.625rem 0.875rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z23-elevation {
+  box-shadow: 0 0.5625rem 2.75rem #0000001f, 0 1.4375rem 2.25rem #00000024, 0 0.6875rem 0.875rem #00000033;
+  border-color: #ffffff00;
+}
+@mixin z24-elevation {
+  box-shadow: 0 0.5625rem 2.875rem #0000001f, 0 1.5rem 2.375rem #00000024, 0 0.6875rem 0.9375rem #00000033;
+  border-color: #ffffff00;
+}
+
+@mixin state-overlay($color, $color-mono, $percentage) {
+  @if ($color-mono == #fff) {
+    background-color: color.mix($color, $color-mono, $percentage);
+  } @else {
+    background-color: color.mix($color, $color-mono, ((2 * $percentage) - 100%));
+  }
+}
+
+// Source: https://css-tricks.com/how-to-tame-line-height-in-css/
+// True font-height is 75% of set font-size
+// $typeRowSpan removed from parameter below
+@mixin basekick($typeSizeModifier, $descenderHeightScale, $capHeight) {
+  $fontSize: $typeSizeModifier * v.$baseFontSize;
+  // $lineHeight: $typeRowSpan * v.$gridRowHeight;
+  $lineHeight: ($fontSize * 1.5) - (($fontSize * 1.5) % 4);//added this
+  $paragraphSpace: ($fontSize * 0.75) - (($fontSize * 0.75) % 4);//added this
+  $typeOffset: f.calculateTypeOffset($lineHeight, $fontSize, $descenderHeightScale);
+  $topSpace: $lineHeight - $capHeight * $fontSize;
+  $heightCorrection: 0;
+  
+  @if $topSpace >= v.$gridRowHeight {
+    $heightCorrection: $topSpace - ($topSpace % v.$gridRowHeight);
+  }
+  
+  $preventCollapse: 1;
+  
+  font-size: #{calc($fontSize / 16)}rem;
+  line-height: #{calc($lineHeight / 16)}rem;
+  transform: translateY(#{$typeOffset}em);
+  padding-top: #{calc($preventCollapse / 16)}rem;
+  margin-top: #{calc(($paragraphSpace + $lineHeight - (0.75 * $fontSize)) / 16)}rem;//added this
+
+  &::before {
+    content: "";
+    margin-top: #{-(calc(($heightCorrection + $preventCollapse) / 16))}rem;
+    display: block;
+    height: 0;
+  }
+}
+
+// $typeRowSpan removed from both parameters below
+@mixin Roboto-font($typeSizeModifier) {
+  $robotoDescenderHeightScale: 0.1511;
+  $robotoCapHeight: 0.75;
+
+  @include basekick($typeSizeModifier, $robotoDescenderHeightScale, $robotoCapHeight);
+}

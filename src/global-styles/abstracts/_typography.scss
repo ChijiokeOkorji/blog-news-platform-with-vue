@@ -1,0 +1,38 @@
+@use 'variables' as v;
+
+@mixin fontSets($font-family, $font-size, $font-weight, $line-height) {
+  font: {
+    family: $font-family;
+    size: $font-size;
+    weight: $font-weight
+  };
+  line-height: $line-height;
+}
+
+.small-font {
+  @include fontSets(#{'SF Pro Text', sans-serif}, 0.75rem, 500, 0.875rem);
+  color: v.$c-black-20;
+}
+
+.h5-font {
+  @include fontSets(#{'SF Pro Text', sans-serif}, 1.125rem, 700, 1.3125rem);
+}
+
+.body-regular-font {
+  @include fontSets(#{'SF Pro Text', sans-serif}, 0.875rem, 400, 1.3125rem);
+  color: v.$c-black-20;
+}
+
+.small-bold-font {
+  @include fontSets(#{'SF Pro Text', sans-serif}, 0.75rem, 700, 0.875rem);
+  color: v.$c-black-30;
+}
+
+.h4-bold-font {
+  @include fontSets(#{'SF Pro Display', sans-serif}, 1.375rem, 900, 1.625rem);
+  color: v.$c-black;
+}
+
+.h4-medium-font {
+  @include fontSets(#{'SF Pro Display', sans-serif}, 1.375rem, 500, 1.625rem);
+}
