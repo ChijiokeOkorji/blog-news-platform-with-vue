@@ -1,19 +1,13 @@
 <script setup>
-import { computed } from 'vue';
-
 const props = defineProps({
   src: String,
   alt: String
 });
 
-const computedPath = computed(() => {
-  return `/src/assets/icons/${props.src}.svg`;
-});
-
 </script>
 
 <template>
-  <img class="icon" :src="computedPath" :alt="alt" />
+  <img class="icon" :src="`public/${props.src}.svg`" :alt="alt" />
 </template>
 
 
