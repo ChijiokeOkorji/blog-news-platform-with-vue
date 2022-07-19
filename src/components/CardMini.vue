@@ -1,6 +1,4 @@
 <script setup>
-// import { computed } from 'vue';
-
   import CardText from "./CardText.vue";
   import ReadBtnContent from "./ReadBtnContent.vue";
 
@@ -10,21 +8,6 @@
   });
 
   const emits = defineEmits(['changeCurrentId']);
-
-  // const computedProps = computed(() => {
-  //   return {
-  //     category: props.post.categories[0],
-  //     time: props.post.date,
-  //     title: stripHtml(props.post.title.rendered),
-  //     body: props.post.excerpt.rendered
-  //   };
-  // });
-
-  // const handleClick = computed(() => {
-  //   return function () {
-  //   emits('changeCurrentId', props.post.id);
-  // }
-  // });
 
   const handleClick = () => {
     emits('changeCurrentId', props.post.id);

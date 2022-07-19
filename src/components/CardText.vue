@@ -1,10 +1,4 @@
 <script setup>
-// const props = defineProps({
-//   category: Number,
-//   time: String,
-//   title: String,
-//   body: String
-// });
   const props = defineProps({
     post: Object
   });

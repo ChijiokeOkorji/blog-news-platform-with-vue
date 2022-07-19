@@ -34,12 +34,13 @@ import { computed, onMounted } from 'vue';
 <template>
   <main>
     <div class="blog-content">
-      <div>
-        <div>By Ryan Jackson</div>
-        <div>2 Month Ago</div>
+      <div class="content-metadata">
+        <span class="small-bold-font" v-html="getPost.categories[0]"></span>
+        <span class="small-bold-font separator">.</span>
+        <span class="small-font" v-html="getPost.date"></span>
       </div>
 
-      <header v-html="getPost.title.rendered"></header>
+      <header class="h4-bold-font" v-html="getPost.title.rendered"></header>
 
       <pre class="body-regular-font" v-html="getPost.content.rendered"></pre>
     </div>
@@ -59,6 +60,20 @@ import { computed, onMounted } from 'vue';
       padding: 0 20%;
       display: flex;
       flex-direction: column;
-    }
+
+      .content-metadata {
+        display: flex;
+        align-items: center;
+
+        .separator {
+          margin: {
+            top: -0.4rem;
+            left: 0.25rem;
+            right: 0.25rem;
+          }
+          cursor: default;
+          }
+        }
+      }
   }
 </style>

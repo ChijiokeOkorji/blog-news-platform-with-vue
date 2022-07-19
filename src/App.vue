@@ -1,11 +1,4 @@
 <script setup>
-// TODO
-// Add payment gateway
-// Implement Pagination
-// Complete PostsView
-// Extract more reusable components if possible
-// Review designs (Responsive nature)
-// Cleanup JavaScript and SCSS
   import { onMounted, ref } from "vue";
   import axios from "axios";
   import HeaderArea from "@/components/HeaderArea.vue";
@@ -26,9 +19,6 @@
     .then(response => {
       posts.value = response.data;
       currentPostId.value = posts.value[0].id;
-      console.log('Posts received');
-      // getCategories(response[0].categories);
-      // console.log(posts.value[0]);
     })
     .catch(error => {
       console.error(error);
