@@ -11,7 +11,6 @@ const props = defineProps({
 const emits = defineEmits(['changeCurrentId']);
 
 const receiveEmits = (data) => {
-  console.log(data);
   emits['changeCurrentId', data];
 };
 </script>
